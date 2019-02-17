@@ -1,0 +1,79 @@
+version: '3.7'
+
+services:
+
+### PHP-FPM #############################
+  phpfpm7.1_symfony_container:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    container_name: phpfpm7.1_symfony_container
+    working_dir: /srv/application
+    volumes:
+      - ../:/srv/application/:rw
+    environment:
+      - DB_NAME=homestead
+      - DB_USER=homestead
+      - DB_PASSWORD=secret
+      - DB_HOST=database_container
+    expose:
+      - "9000"
+    networks:
+      - dev_network
+
+  phpcli7.1_symfony_container:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    container_name: phpcli7.1_symfony_container
+    working_dir: /srv/application
+    volumes:
+      - ../:/srv/application/:rw
+    environment:
+      - DB_NAME=homestead
+      - DB_USER=homestead
+      - DB_PASSWORD=secret
+      - DB_HOST=database_container
+    expose:
+      - "9000"
+    networks:
+      - dev_network
+
+### WEB-SERVER #############################
+  nginx1.15.1_container:
+    image: "nginx:1.15.1"
+    container_name: nginx1.15.1_container
+    command: /bin/bash -c "cat < /srv/application/docker/nginx/site.conf > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
+    volumes:
+      - ../:/srv/application/:rw
+      - ./logs/nginx/log/:/var/log/nginx/:rw
+    ports:
+      - "8080:80"
+    depends_on:
+      - "phpfpm7.1_symfony_container"
+    networks:
+      - dev_network
+
+#### DATABASES #############################
+#  database_container:
+#    image: "registry.gitlab.com/server_soft/maria_db_10"
+#    container_name: database_container
+#    volumes:
+#      - ../docker/logs/mariadb/mysql/:/var/lib/mysql/:rw
+#    environment:
+#      - MYSQL_DATABASE=homestead
+#      - MYSQL_USER=homestead
+#      - MYSQL_PASSWORD=secret
+#      - MYSQL_ROOT_PASSWORD=root
+#      - MYSQL_CONFIGURATIONS=
+#    ports:
+#      - "3306:3306"
+#    networks:
+#      - dev_network
+
+###########################################
+### NETWORK #############################
+###########################################
+networks:
+  dev_network:
+    driver: bridge
