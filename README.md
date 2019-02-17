@@ -8,7 +8,9 @@ see the Installation chapter of the Symfony Documentation.
 
 ## Installation
 ### Clone Repository
-1. git clone git@github.com:SanderV1992/Symfony-4.2-skeleton-with-fully-configured-Docker-PHPSTORM-Xdebug-PHPUnit.git my-project
+```
+git clone git@github.com:SanderV1992/Symfony-4.2-skeleton-with-fully-configured-Docker-PHPSTORM-Xdebug-PHPUnit.git my-project
+```
 
 ### Build Docker
 1. cd ./docker
@@ -32,53 +34,59 @@ see the Installation chapter of the Symfony Documentation.
 
 ### PHPSTORM
 ##### Current Project Interpreter
-1. Preferences | Languages & Frameworks > PHP
-- CLI Interpreter: phpcli7.1_symfony_container
-- Path mappings: /srv/application
+1. Select CLI Interpreter
+- Select: `From Docker, Vagrant, VM, Remote`
+- Remote: `Docker Compose`
+- Server: `docker-compose`
+- Configuration file: `./docker/docker-compose.yml`
+- Service: `phpcli7.1_symfony_container`
+
+2. Preferences | Languages & Frameworks > PHP
+- CLI Interpreter: `phpcli7.1_symfony_container`
+- Path mappings: `/srv/application`
 
 ##### Xdebug and PHPUnit
 2. Preferences | Languages & Frameworks > PHP > Debug -> DBGp Proxy
-- IDE Key: PHPSTORM
-- Host: localhost
-- Port: 9000
+- IDE Key: `PHPSTORM`
+- Host: `localhost`
+- Port: `9000`
 
 3. Preferences | Languages & Frameworks > PHP > Servers
-- Name: localhost 8080
-- Host: localhost
-- Port: 8080
-- Debugger: Xdebug
-- Use path mapping: yes
+- Name: `localhost 8080`
+- Host: `localhost`
+- Port: `8080`
+- Debugger: `Xdebug`
+- Use path mapping: `yes`
 
 File/Directory - Absolute path on the server
-- ./public/index.php - /srv/application/public/index.php
-- ./src - /srv/application/src
+- `./public/index.php - /srv/application/public/index.php`
+- `./src - /srv/application/src`
 
-4. Test Framework (create new configuration to allow PHPSTORM find PHPUnit):
-- Interpreter: phpcli7.1_symfony_container
-- CLI Interpreter: phpcli7.1_symfony_container
-- Path mappings: /srv/application
+4. Preferences | Languages & Frameworks > PHP > Test Framework (create new configuration to allow PHPSTORM find PHPUnit):
+- Interpreter: `phpcli7.1_symfony_container`
+- CLI Interpreter: `phpcli7.1_symfony_container`
+- Path mappings: `/srv/application`
 
 PHPUnit library:
-- PHPUnit library: Use Composer autoloader
-- Path to script: /srv/application/vendor/autoload.php
+- PHPUnit library: `Use Composer autoloader`
+- Path to script: `/srv/application/vendor/autoload.php`
 
 Test Runner:
-- Default configuration file: /srv/application/phpunit.xml
+- Default configuration file: `/srv/application/phpunit.xml`
 
-##### Docker
 ### Run/Debug configurations
 1. PHP Remote Debugger
-- name: PHP Remote Debugger
+- name: `PHP Remote Debugger
 
 Configuration:
-- Filter debug connection by IDE key: yes
-- Server: localhost 8080
-- IDE key(seccion id): PHPSTORM
+- Filter debug connection by IDE key: `yes
+- Server: `localhost 8080`
+- IDE key(seccion id): `PHPSTORM`
 
 2. Docker Compose
-- name: Docker Compose
-- Server: docker-compose
-- Choose file: ./docker/docker-compose.yml
+- name: `Docker Compose`
+- Server: `docker-compose`
+- Choose file: `./docker/docker-compose.yml`
 
 ### Stop Docker-Compose
 1. cd ./docker
