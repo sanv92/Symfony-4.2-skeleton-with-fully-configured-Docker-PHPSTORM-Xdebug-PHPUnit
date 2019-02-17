@@ -34,24 +34,24 @@ git clone git@github.com:SanderV1992/Symfony-4.2-skeleton-with-fully-configured-
 
 ### PHPSTORM
 ##### Current Project Interpreter
-1. Select CLI Interpreter
+###### Select CLI Interpreter
 - Select: `From Docker, Vagrant, VM, Remote`
 - Remote: `Docker Compose`
 - Server: `docker-compose`
 - Configuration file: `./docker/docker-compose.yml`
 - Service: `phpcli7.1_symfony_container`
 
-2. Preferences | Languages & Frameworks > PHP
+###### Preferences | Languages & Frameworks > PHP
 - CLI Interpreter: `phpcli7.1_symfony_container`
 - Path mappings: `/srv/application`
 
 ##### Xdebug and PHPUnit
-2. Preferences | Languages & Frameworks > PHP > Debug -> DBGp Proxy
+###### Preferences | Languages & Frameworks > PHP > Debug -> DBGp Proxy
 - IDE Key: `PHPSTORM`
 - Host: `localhost`
 - Port: `9000`
 
-3. Preferences | Languages & Frameworks > PHP > Servers
+###### Preferences | Languages & Frameworks > PHP > Servers
 - Name: `localhost 8080`
 - Host: `localhost`
 - Port: `8080`
@@ -62,7 +62,7 @@ File/Directory - Absolute path on the server
 - `./public/index.php - /srv/application/public/index.php`
 - `./src - /srv/application/src`
 
-4. Preferences | Languages & Frameworks > PHP > Test Framework (create new configuration to allow PHPSTORM find PHPUnit):
+###### Preferences | Languages & Frameworks > PHP > Test Framework (create new configuration to allow PHPSTORM find PHPUnit):
 - Interpreter: `phpcli7.1_symfony_container`
 - CLI Interpreter: `phpcli7.1_symfony_container`
 - Path mappings: `/srv/application`
@@ -75,7 +75,7 @@ Test Runner:
 - Default configuration file: `/srv/application/phpunit.xml`
 
 ### Run/Debug configurations
-1. PHP Remote Debugger
+###### PHP Remote Debugger
 - name: `PHP Remote Debugger
 
 Configuration:
@@ -83,7 +83,7 @@ Configuration:
 - Server: `localhost 8080`
 - IDE key(seccion id): `PHPSTORM`
 
-2. Docker Compose
+###### Docker Compose
 - name: `Docker Compose`
 - Server: `docker-compose`
 - Choose file: `./docker/docker-compose.yml`
@@ -93,7 +93,7 @@ Configuration:
 2. docker-compose down
 
 ### Run Docker-Compose via PHPSTORM
-1. Click Docker Button in PHPSTORM toolbar 
+1. Click Docker Button in PHPSTORM toolbar
 2. Connect to Docker
 3. Run all docker container
 
