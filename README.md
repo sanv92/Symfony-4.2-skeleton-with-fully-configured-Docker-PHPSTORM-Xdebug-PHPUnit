@@ -100,4 +100,4 @@ Configuration:
 ---
 
 More details documentation with screenshots, please visit this website:
-https://everyone-can-code.github.io/symfony-setting-up-PhpStorm-with-Xdebug-and-Docker-configuration/
+- https://everyone-can-code.github.io/Symfony-setting-up-PhpStorm-with-Xdebug-and-Docker-configuration/
